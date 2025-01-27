@@ -66,15 +66,16 @@ app.get('/', async (req, res) => {
 
 app.get('/products/:id', async (req, res) => {
     try {
-        const { id } =req.params;
+        const { id } = req.params;
         const product = await getProduct(id);
-        const klarnaResponse = await createOrder(product);
-        const markup = klarnaResponse.html_snippet;
-        res.send(markup);
-    } catch(error) {
+        const KlarnaResponse = await createOrder(product);
+        const { html_snippet } = KlarnaResponse;
+        res.send(html_snippet);
+      } catch (error) {
         res.send(error.message);
-    }
-});
+      }
+    
+    });
 
 app.get('/confirmation', async (req, res) => {
     const { order_id } = req.query;
