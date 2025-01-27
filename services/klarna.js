@@ -4,7 +4,7 @@ export function getKlarnaAuth() {
   const username = process.env.PUBLIC_KEY;
   const password = process.env.SECRET_KEY;
   const auth = `Basic ${Buffer.from(username + ':' + password).toString('base64')}`;
-  return auth
+  return auth;
 }
 
 // Skapar en order hos klarna
@@ -83,6 +83,6 @@ export async function retrieveOrder(order_id) {
   } else {
     return {
       html_snippet: `<h1>${response.status} ${response.statusText}</h1>`
-    }
+    };
   }
 }
